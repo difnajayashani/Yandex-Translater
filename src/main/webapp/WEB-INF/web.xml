@@ -1,0 +1,51 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+  <context-param>
+    <param-name>DBUSER</param-name>
+    <param-value>user_name</param-value>
+  </context-param>
+  <context-param>
+    <param-name>DBPWD</param-name>
+    <param-value>password</param-value>
+  </context-param>
+  <context-param>
+    <param-name>DBURL</param-name>
+    <param-value>jdbc:mysql://localhost/login_db</param-value>
+  </context-param>
+
+  <listener>
+    <listener-class>listener.AppContextListener</listener-class>
+  </listener>
+
+  <servlet>
+    <servlet-name>servlet1</servlet-name>
+    <description>servlet1</description>
+    <servlet-class>servelet.MyServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+
+  </servlet>
+
+  <servlet>
+    <servlet-name>servlet2</servlet-name>
+    <servlet-class>servelet.MyServletTranslate</servlet-class>
+    <load-on-startup>2</load-on-startup>
+
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>servlet1</servlet-name>
+    <url-pattern>/MyServlet</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet-mapping>
+    <servlet-name>servlet2</servlet-name>
+    <url-pattern>/MyServletTranslate</url-pattern>
+  </servlet-mapping>
+
+</web-app>
