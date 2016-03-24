@@ -30,6 +30,7 @@ public class MyServletTranslate extends HttpServlet {
             String ol = request.getParameter("original-lang");
             String tl = request.getParameter("translate-lang");
             String text_input = request.getParameter("original-text");
+            request.setAttribute("original", text_input);
 
 
 
@@ -42,7 +43,9 @@ public class MyServletTranslate extends HttpServlet {
             request.setAttribute("language_list",list);
 
 
-
+            request.setAttribute("selected_ol", ol);
+            request.setAttribute("selected_tl", tl);
+            request.setAttribute("original", text_input);
             request.setAttribute("translated", text_output);
             RequestDispatcher rd=getServletContext().getRequestDispatcher("/translater.jsp");
             rd.forward(request,response);

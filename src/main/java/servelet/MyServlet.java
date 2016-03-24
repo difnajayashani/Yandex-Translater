@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -48,6 +49,12 @@ public class MyServlet extends HttpServlet {
                 load = lang_obj.getLangs();
                 request.setAttribute("language_list", load);
 
+
+                /**set the logged in user's name */
+                HttpSession session = request.getSession(false);
+                if (session != null)
+                    session.setAttribute("name", n);
+
                 //navigate to the translater page in case login is valid
                 RequestDispatcher rd = request.getRequestDispatcher("translater.jsp");
                 rd.forward(request, response);
@@ -57,7 +64,9 @@ public class MyServlet extends HttpServlet {
             //HttpServletRequest languagelist = null;
 
         } else {
-            out.print("<p style=\"color:blue\">Sorry username or password error</p>");
+/**/
+            request.setAttribute("error", "Sorry username or password error");
+            //out.print("<p style=\"color:blue\">Sorry username or password error</p>");
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.include(request, response);
         }
