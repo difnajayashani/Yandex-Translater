@@ -28,6 +28,20 @@
                         <tr>
                             <td><input type=submit value=Login name=submit/></td>
                         </tr>
+                        <tr>
+
+                                <p style="color:red">
+                                         <%
+                                         String s= (String)request.getAttribute("error");
+                                              if(s!= null){
+                                                out.println(s);
+                                              }
+
+                                         %>
+                                </p>
+
+
+                        </tr>
                     </table>
 
 
